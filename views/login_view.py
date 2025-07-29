@@ -8,10 +8,14 @@ def login_view(page, route):
         if username_field.value and password_field.value:
             page.go(route)
 
-        login_button.on_click = on_login_btn
+        
 
-    username_field: type[TextField] = ft.TextField(label="Username")
-    password_field: type[TextField] = ft.TextField(label="Password", password=True, can_reveal_password=True)
-    login_button: ElevatedButton = ft.ElevatedButton("Login", on_click=on_login_btn)
+    username_field: ft.TextField = ft.TextField(label="Username")
+    password_field: ft.TextField = ft.TextField(label="Password", password=True, can_reveal_password=True)
+    login_button: ft.ElevatedButton = ft.ElevatedButton("Login", on_click=on_login_btn)
 
+    btn_home_view: ft.ElevatedButton = ft.ElevatedButton("Go Home",
+    on_click=lambda e: page.go('/home')
+    )
 
+    page.add(btn_home_view, username_field, password_field, login_button,)
